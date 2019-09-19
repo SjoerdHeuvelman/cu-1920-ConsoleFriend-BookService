@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using BookService.WebAPI.Models;
 using BookService.WebAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +41,23 @@ namespace BookService.WebAPI.Controllers
         public async Task<IActionResult> GetBookDetail(int id)
         {
             return Ok(_bookRepository.GetById(id));
+        }
+        
+        // GET: api/books/imagebyname/book2.jpg
+        [HttpGet]
+        [Route("ImageByName/{filename}")]
+        public IActionResult ImageByFileName(string filename)
+        {
+            var image = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", filename);
+            return PhysicalFile(image, "image/jpeg");
+        }
+
+        // GET: api/books/imagebyid/6
+        [HttpGet]
+        [Route("ImageById/{bookid}")]
+        public async Task<IActionResult> ImageById(int bookid)
+        {            
+            return ImageByFileName(_bookRepository.GetById(bookid).FileName);
         }
     }
 }
