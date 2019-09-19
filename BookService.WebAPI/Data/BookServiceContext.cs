@@ -27,13 +27,90 @@ namespace BookService.WebAPI.Data
             // using ANONYMOUS CLASS to construct Books in Db (AuthorId and PublisherId are no real properties
             modelBuilder.Entity<Book>()
                 .ToTable("Book")
-                .HasData(new { Id = 1, ISBN = "123456789", Title = "Learning C#", NumberOfPages = 420, FileName = "book1.jpg", AuthorId = 1, PublisherId = 1 },
-                    new { Id = 2, ISBN = "45689132", Title = "Mastering Linq", NumberOfPages = 360, FileName = "book2.jpg", AuthorId = 2, PublisherId = 1 },
-                    new { Id = 3, ISBN = "15856135", Title = "Mastering Xamarin", NumberOfPages = 360, FileName = "book3.jpg", AuthorId = 1, PublisherId = 1 },
-                    new { Id = 4, ISBN = "56789564", Title = "Exploring ASP.Net Core 2.0", NumberOfPages = 360, FileName = "book1.jpg", AuthorId = 2, PublisherId = 1 },
-                    new { Id = 5, ISBN = "234546684", Title = "Unity Game Development", NumberOfPages = 420, FileName = "book2.jpg", AuthorId = 2, PublisherId = 1 },
-                    new { Id = 6, ISBN = "789456258", Title = "Cooking is fun", NumberOfPages = 40, FileName = "book3.jpg", AuthorId = 3, PublisherId = 2 },
-                    new { Id = 7, ISBN = "94521546", Title = "Secret recipes", NumberOfPages = 53, FileName = "book3.jpg", AuthorId = 3, PublisherId = 2 });
+                .HasData(new
+                {
+                    Id = 1,
+                    ISBN = "123456789",
+                    Title = "Learning C#",
+                    NumberOfPages = 420,
+                    FileName = "book1.jpg",
+                    AuthorId = 1,
+                    PublisherId = 1,
+                    Price = 24.99M,
+                    Year = 2018
+                },
+                    new
+                    {
+                        Id = 2,
+                        ISBN = "45689132",
+                        Title = "Mastering Linq",
+                        NumberOfPages = 360,
+                        FileName = "book2.jpg",
+                        AuthorId = 2,
+                        PublisherId = 1,
+                        Price = 35.99M,
+                        Year = 2016
+                    },
+                    new
+                    {
+                        Id = 3,
+                        ISBN = "15856135",
+                        Title = "Mastering Xamarin",
+                        NumberOfPages = 360,
+                        FileName = "book3.jpg",
+                        AuthorId = 1,
+                        PublisherId = 1,
+                        Price = 50.00M,
+                        Year = 2017
+                    },
+                    new
+                    {
+                        Id = 4,
+                        ISBN = "56789564",
+                        Title = "Exploring ASP.Net Core 2.0",
+                        NumberOfPages = 360,
+                        FileName = "book1.jpg",
+                        AuthorId = 2,
+                        PublisherId = 1,
+                        Price = 45.00M,
+                        Year = 2018
+                    },
+                    new
+                    {
+                        Id = 5,
+                        ISBN = "234546684",
+                        Title = "Unity Game Development",
+                        NumberOfPages = 420,
+                        FileName = "book2.jpg",
+                        AuthorId = 2,
+                        PublisherId = 1,
+                        Price = 70.50M,
+                        Year = 2017
+                    },
+                    new
+                    {
+                        Id = 6,
+                        ISBN = "789456258",
+                        Title = "Cooking is fun",
+                        NumberOfPages = 40,
+                        FileName = "book3.jpg",
+                        AuthorId = 3,
+                        PublisherId = 2,
+                        Price = 52.00M,
+                        Year = 2007
+                    },
+                    new
+                    {
+                        Id = 7,
+                        ISBN = "94521546",
+                        Title = "Secret recipes",
+                        NumberOfPages = 53,
+                        FileName = "book3.jpg",
+                        AuthorId = 3,
+                        PublisherId = 2,
+                        Price = 30.00M,
+                        Year = 2017
+                    });
         }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
