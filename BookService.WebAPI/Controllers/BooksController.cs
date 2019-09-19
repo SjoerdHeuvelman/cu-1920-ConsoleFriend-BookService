@@ -37,7 +37,7 @@ namespace BookService.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Detail/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> GetBookDetail(int id)
         {
             return Ok(_bookRepository.GetById(id));
