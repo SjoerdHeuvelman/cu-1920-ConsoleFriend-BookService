@@ -1,4 +1,5 @@
 ﻿using BookService.WebAPI.Data;
+using BookService.WebAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,7 @@ namespace BookService.WebAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<BookServiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BookService"))); 
+            services.AddScoped<BookRepository>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
