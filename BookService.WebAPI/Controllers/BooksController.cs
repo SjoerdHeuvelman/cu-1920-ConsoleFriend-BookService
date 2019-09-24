@@ -46,18 +46,18 @@ namespace BookService.WebAPI.Controllers
         // GET: api/books/imagebyname/book2.jpg
         [HttpGet]
         [Route("ImageByName/{filename}")]
-        public IActionResult ImageByFileName(string filename)
+        public IActionResult GetImageByFileName(string filename)
         {
-            var image = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", filename);
-            return PhysicalFile(image, "image/jpeg");
+            var pathOfImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", filename);
+            return PhysicalFile(pathOfImage, "image/jpeg");
         }
 
         // GET: api/books/imagebyid/6
         [HttpGet]
         [Route("ImageById/{bookid}")]
-        public async Task<IActionResult> ImageById(int bookid)
+        public IActionResult GetImageByBookId(int bookid)
         {            
-            return ImageByFileName(_bookRepository.GetById(bookid).FileName);
+            return GetImageByFileName(_bookRepository.GetById(bookid).FileName);
         }
     }
 }
