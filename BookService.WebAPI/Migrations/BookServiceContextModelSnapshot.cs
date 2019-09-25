@@ -27,6 +27,10 @@ namespace BookService.WebAPI.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
@@ -40,6 +44,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateTime(1980, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 821, DateTimeKind.Local).AddTicks(8704),
                             FirstName = "James",
                             LastName = "Sharp"
                         },
@@ -47,6 +52,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 2,
                             BirthDate = new DateTime(1992, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 821, DateTimeKind.Local).AddTicks(8846),
                             FirstName = "Sophie",
                             LastName = "Netty"
                         },
@@ -54,6 +60,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 3,
                             BirthDate = new DateTime(1996, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 821, DateTimeKind.Local).AddTicks(8913),
                             FirstName = "Elisa",
                             LastName = "Yammy"
                         });
@@ -66,6 +73,10 @@ namespace BookService.WebAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("AuthorId");
+
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("FileName");
 
@@ -184,6 +195,10 @@ namespace BookService.WebAPI.Migrations
 
                     b.Property<string>("Country");
 
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -195,12 +210,14 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             Country = "UK",
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 822, DateTimeKind.Local).AddTicks(7335),
                             Name = "IT-publishers"
                         },
                         new
                         {
                             Id = 2,
                             Country = "Sweden",
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 822, DateTimeKind.Local).AddTicks(7460),
                             Name = "FoodBooks"
                         });
                 });

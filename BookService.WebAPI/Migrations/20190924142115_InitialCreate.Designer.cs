@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookService.WebAPI.Migrations
 {
     [DbContext(typeof(BookServiceContext))]
-    [Migration("20190919063936_InitialCreate")]
+    [Migration("20190924142115_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,6 +29,10 @@ namespace BookService.WebAPI.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
@@ -42,6 +46,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateTime(1980, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 819, DateTimeKind.Local).AddTicks(4813),
                             FirstName = "James",
                             LastName = "Sharp"
                         },
@@ -49,6 +54,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 2,
                             BirthDate = new DateTime(1992, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 819, DateTimeKind.Local).AddTicks(5001),
                             FirstName = "Sophie",
                             LastName = "Netty"
                         },
@@ -56,6 +62,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 3,
                             BirthDate = new DateTime(1996, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 819, DateTimeKind.Local).AddTicks(5135),
                             FirstName = "Elisa",
                             LastName = "Yammy"
                         });
@@ -69,15 +76,23 @@ namespace BookService.WebAPI.Migrations
 
                     b.Property<int?>("AuthorId");
 
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<string>("FileName");
 
                     b.Property<string>("ISBN");
 
                     b.Property<int>("NumberOfPages");
 
+                    b.Property<decimal>("Price");
+
                     b.Property<int?>("PublisherId");
 
                     b.Property<string>("Title");
+
+                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 
@@ -95,8 +110,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book1.jpg",
                             ISBN = "123456789",
                             NumberOfPages = 420,
+                            Price = 24.99m,
                             PublisherId = 1,
-                            Title = "Learning C#"
+                            Title = "Learning C#",
+                            Year = 2018
                         },
                         new
                         {
@@ -105,8 +122,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book2.jpg",
                             ISBN = "45689132",
                             NumberOfPages = 360,
+                            Price = 35.99m,
                             PublisherId = 1,
-                            Title = "Mastering Linq"
+                            Title = "Mastering Linq",
+                            Year = 2016
                         },
                         new
                         {
@@ -115,8 +134,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book3.jpg",
                             ISBN = "15856135",
                             NumberOfPages = 360,
+                            Price = 50.00m,
                             PublisherId = 1,
-                            Title = "Mastering Xamarin"
+                            Title = "Mastering Xamarin",
+                            Year = 2017
                         },
                         new
                         {
@@ -125,8 +146,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book1.jpg",
                             ISBN = "56789564",
                             NumberOfPages = 360,
+                            Price = 45.00m,
                             PublisherId = 1,
-                            Title = "Exploring ASP.Net Core 2.0"
+                            Title = "Exploring ASP.Net Core 2.0",
+                            Year = 2018
                         },
                         new
                         {
@@ -135,8 +158,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book2.jpg",
                             ISBN = "234546684",
                             NumberOfPages = 420,
+                            Price = 70.50m,
                             PublisherId = 1,
-                            Title = "Unity Game Development"
+                            Title = "Unity Game Development",
+                            Year = 2017
                         },
                         new
                         {
@@ -145,8 +170,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book3.jpg",
                             ISBN = "789456258",
                             NumberOfPages = 40,
+                            Price = 52.00m,
                             PublisherId = 2,
-                            Title = "Cooking is fun"
+                            Title = "Cooking is fun",
+                            Year = 2007
                         },
                         new
                         {
@@ -155,8 +182,10 @@ namespace BookService.WebAPI.Migrations
                             FileName = "book3.jpg",
                             ISBN = "94521546",
                             NumberOfPages = 53,
+                            Price = 30.00m,
                             PublisherId = 2,
-                            Title = "Secret recipes"
+                            Title = "Secret recipes",
+                            Year = 2017
                         });
                 });
 
@@ -167,6 +196,10 @@ namespace BookService.WebAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Country");
+
+                    b.Property<DateTime?>("CreatedDateTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name");
 
@@ -179,12 +212,14 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             Country = "UK",
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 820, DateTimeKind.Local).AddTicks(9849),
                             Name = "IT-publishers"
                         },
                         new
                         {
                             Id = 2,
                             Country = "Sweden",
+                            CreatedDateTime = new DateTime(2019, 9, 24, 16, 21, 15, 820, DateTimeKind.Local).AddTicks(9927),
                             Name = "FoodBooks"
                         });
                 });
