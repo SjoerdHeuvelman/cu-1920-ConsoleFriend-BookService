@@ -111,6 +111,22 @@ namespace BookService.WebAPI.Data
                         Price = 30.00M,
                         Year = 2017
                     });
+
+            modelBuilder.Entity<Publisher>()
+                .Property(p => p.CreatedDateTime)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<Author>()
+                .Property(a => a.CreatedDateTime)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<Book>()
+                .Property(b => b.CreatedDateTime)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
         }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
