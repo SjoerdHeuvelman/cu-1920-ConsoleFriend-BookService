@@ -11,11 +11,8 @@ namespace BookService.WebAPI.Repositories
 {
     public class AuthorRepository : RepositoryBase<Author>
     {
-        //private BookServiceContext _bookServiceContext;
-
         public AuthorRepository(BookServiceContext bookServiceContext) : base(bookServiceContext)
-        {
-            //_bookServiceContext = bookServiceContext;
+        {            
         }
         
         public async Task<List<AuthorBasicDto>> ListBasic()
