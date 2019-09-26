@@ -23,24 +23,24 @@ namespace BookService.WebAPI.Controllers
 
         // GET: api/Books
         [HttpGet]
-        public IActionResult GetBooks()
+        public async Task<IActionResult> GetBooks()
         {
-            return Ok(_bookRepository.List());
+            return Ok(await _bookRepository.ListAll());
         }
 
         // GET: api/Books/Basic
         [HttpGet]
         [Route("Basic")]
-        public IActionResult GetBooksBasic()
+        public async Task<IActionResult> GetBooksBasic()
         {
-            return Ok(_bookRepository.ListBasic());
+            return Ok(await _bookRepository.ListBasic());
         }
 
         [HttpGet]
         [Route("{id}")]
         public async Task<IActionResult> GetBookDetail(int id)
         {
-            return Ok(_bookRepository.GetById(id));
+            return Ok(await _bookRepository.GetById(id));
         }
         
         // GET: api/books/imagebyname/book2.jpg
@@ -55,9 +55,10 @@ namespace BookService.WebAPI.Controllers
         // GET: api/books/imagebyid/6
         [HttpGet]
         [Route("ImageById/{bookid}")]
-        public IActionResult GetImageByBookId(int bookid)
-        {            
-            return GetImageByFileName(_bookRepository.GetById(bookid).FileName);
+        public async Task<IActionResult> GetImageById(int bookid)
+        {
+            BookDetail book = await _bookRepository.GetDetailById(bookid);
+            return GetImageByFileName(book.FileName);
         }
     }
 }
