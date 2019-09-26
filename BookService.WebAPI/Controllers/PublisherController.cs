@@ -24,14 +24,14 @@ namespace BookService.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPublishers()
         {
-            return Ok(_publisherRepository.List());
+            return Ok(await _publisherRepository.ListAll());
         }
 
         // GET: api/Publisher/2
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPublisher(int id)
         {
-            return Ok(_publisherRepository.GetById(id));
+            return Ok(await _publisherRepository.GetById(id));
         }
 
         //PUT: api/Publisher/2
