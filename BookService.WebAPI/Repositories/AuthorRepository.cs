@@ -1,6 +1,7 @@
 ﻿using BookService.WebAPI.Data;
 using BookService.WebAPI.DTO;
 using BookService.WebAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,31 +9,22 @@ using System.Threading.Tasks;
 
 namespace BookService.WebAPI.Repositories
 {
-    public class AuthorRepository
+    public class AuthorRepository : RepositoryBase<Author>
     {
-        private BookServiceContext _bookServiceContext;
+        //private BookServiceContext _bookServiceContext;
 
-        public AuthorRepository(BookServiceContext bookServiceContext)
+        public AuthorRepository(BookServiceContext bookServiceContext) : base(bookServiceContext)
         {
-            _bookServiceContext = bookServiceContext;
+            //_bookServiceContext = bookServiceContext;
         }
-        public List<Author> List()
-        {            
-            return _bookServiceContext.Authors.ToList();
-        }
-
-        public List<AuthorBasicDto> ListBasic()
+        
+        public async Task<List<AuthorBasicDto>> ListBasic()
         {
-            return _bookServiceContext.Authors.Select(a => new AuthorBasicDto
+            return await _bookServiceContext.Authors.Select(a => new AuthorBasicDto
             {
                 Id = a.Id,
                 Name = $"{a.LastName} {a.FirstName}"
-            }).ToList();
-        }
-
-        public Author GetById(int id)
-        {
-            return _bookServiceContext.Authors.Find(id);
+            }).ToListAsync();
         }
     }
 }
