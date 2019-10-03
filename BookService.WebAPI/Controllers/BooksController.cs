@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookService.WebAPI.Models;
 using BookService.WebAPI.Repositories;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,11 @@ namespace BookService.WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerCrudBase<Book, BookRepository>
-    {       
-
-        public BooksController(BookRepository bookRepository) : base(bookRepository)
-        {            
+    {
+        private readonly IHostingEnvironment _hostingEnvironment;
+        public BooksController(BookRepository bookRepository, IHostingEnvironment hostingEnvironment) : base(bookRepository)
+        {
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: api/Books
@@ -39,7 +41,7 @@ namespace BookService.WebAPI.Controllers
         [Route("ImageByName/{filename}")]
         public IActionResult GetImageByFileName(string filename)
         {
-            var pathOfImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", filename);
+            var pathOfImage = Path.Combine(_hostingEnvironment.WebRootPath, "images", filename);
             return PhysicalFile(pathOfImage, "image/jpeg");
         }
 
@@ -56,7 +58,7 @@ namespace BookService.WebAPI.Controllers
         [Route("Image")]
         public async Task<IActionResult> Image(IFormFile formFile)
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", formFile.FileName);
+            var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", formFile.FileName);
 
             if(formFile.Length > 0)
             {
