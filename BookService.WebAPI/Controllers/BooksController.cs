@@ -48,7 +48,7 @@ namespace BookService.WebAPI.Controllers
         [Route("ImageById/{bookid}")]
         public async Task<IActionResult> GetImageById(int bookid)
         {
-            BookDetail book = await _bookRepository.GetDetailById(bookid);
+            BookDetail book = await repository.GetDetailById(bookid);
             return GetImageByFileName(book.FileName);
         }
     }
