@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookService.WebAPI.Models
 {
@@ -15,5 +17,7 @@ namespace BookService.WebAPI.Models
         public string FileName { get; set; }
         public int Year { get; set; }
         public decimal Price { get; set; }
+        //[JsonIgnore]
+        public ICollection<Rating> Ratings { get; set; }
     }
 }
