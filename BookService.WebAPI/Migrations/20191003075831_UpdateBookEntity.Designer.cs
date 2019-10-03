@@ -4,14 +4,16 @@ using BookService.WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookService.WebAPI.Migrations
 {
     [DbContext(typeof(BookServiceContext))]
-    partial class BookServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20191003075831_UpdateBookEntity")]
+    partial class UpdateBookEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateTime(1980, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 255, DateTimeKind.Local).AddTicks(8890),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 253, DateTimeKind.Local).AddTicks(6206),
                             FirstName = "James",
                             LastName = "Sharp"
                         },
@@ -52,7 +54,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 2,
                             BirthDate = new DateTime(1992, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 255, DateTimeKind.Local).AddTicks(8992),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 253, DateTimeKind.Local).AddTicks(6425),
                             FirstName = "Sophie",
                             LastName = "Netty"
                         },
@@ -60,7 +62,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 3,
                             BirthDate = new DateTime(1996, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 255, DateTimeKind.Local).AddTicks(9058),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 253, DateTimeKind.Local).AddTicks(6491),
                             FirstName = "Elisa",
                             LastName = "Yammy"
                         });
@@ -210,14 +212,14 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             Country = "UK",
-                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 256, DateTimeKind.Local).AddTicks(4312),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 254, DateTimeKind.Local).AddTicks(9284),
                             Name = "IT-publishers"
                         },
                         new
                         {
                             Id = 2,
                             Country = "Sweden",
-                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 256, DateTimeKind.Local).AddTicks(4449),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 9, 58, 31, 254, DateTimeKind.Local).AddTicks(9370),
                             Name = "FoodBooks"
                         });
                 });
