@@ -12,20 +12,18 @@ namespace BookService.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BooksController : ControllerBase
-    {
-        readonly BookRepository _bookRepository;
+    public class BooksController : ControllerCrudBase<Book, BookRepository>
+    {       
 
-        public BooksController(BookRepository bookRepository)
-        {
-            _bookRepository = bookRepository;
+        public BooksController(BookRepository bookRepository) : base(bookRepository)
+        {            
         }
 
         // GET: api/Books
         [HttpGet]
         public async Task<IActionResult> GetBooks()
         {
-            return Ok(await _bookRepository.ListAll());
+            return Ok(await repository.GetAllInclusive());
         }
 
         // GET: api/Books/Basic
@@ -33,15 +31,8 @@ namespace BookService.WebAPI.Controllers
         [Route("Basic")]
         public async Task<IActionResult> GetBooksBasic()
         {
-            return Ok(await _bookRepository.ListBasic());
-        }
-
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetBookDetail(int id)
-        {
-            return Ok(await _bookRepository.GetById(id));
-        }
+            return Ok(await repository.ListBasic());
+        }                           
         
         // GET: api/books/imagebyname/book2.jpg
         [HttpGet]
