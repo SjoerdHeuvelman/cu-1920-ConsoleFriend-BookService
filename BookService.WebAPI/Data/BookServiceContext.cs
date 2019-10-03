@@ -112,6 +112,23 @@ namespace BookService.WebAPI.Data
                         Year = 2017
                     });
 
+            modelBuilder.Entity<Reader>().ToTable("Reader")
+                .HasData(
+                    new Reader(1, "Joe", "Pageturner"),
+                    new Reader(2, "Linda", "Bookslaughter"),
+                    new Reader(3, "Wendy", "Allreader")
+                );
+
+            modelBuilder.Entity<Rating>().ToTable("Rating")
+                 .HasData(
+                 new Rating(1, 1, 1, 3),
+                 new Rating(2, 1, 2, 2),
+                 new Rating(3, 2, 3, 5),
+                 new Rating(4, 2, 1, 4),
+                 new Rating(5, 3, 2, 2),
+                 new Rating(6, 3, 3, 3)
+                 );
+
             modelBuilder.Entity<Publisher>()
                 .Property(p => p.CreatedDateTime)
                 .HasDefaultValueSql("GETDATE()")
@@ -127,9 +144,21 @@ namespace BookService.WebAPI.Data
                 .HasDefaultValueSql("GETDATE()")
                 .ValueGeneratedOnAddOrUpdate();
 
+            modelBuilder.Entity<Reader>()
+                .Property(r => r.CreatedDateTime)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<Rating>()
+                .Property(r => r.CreatedDateTime)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
         }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Reader> Readers { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
     }
 }
