@@ -4,14 +4,16 @@ using BookService.WebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookService.WebAPI.Migrations
 {
     [DbContext(typeof(BookServiceContext))]
-    partial class BookServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20191003132131_AddReaderAndRating")]
+    partial class AddReaderAndRating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateTime(1980, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 255, DateTimeKind.Local).AddTicks(5532),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 253, DateTimeKind.Local).AddTicks(2764),
                             FirstName = "James",
                             LastName = "Sharp"
                         },
@@ -52,7 +54,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 2,
                             BirthDate = new DateTime(1992, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 255, DateTimeKind.Local).AddTicks(5618),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 253, DateTimeKind.Local).AddTicks(2881),
                             FirstName = "Sophie",
                             LastName = "Netty"
                         },
@@ -60,7 +62,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 3,
                             BirthDate = new DateTime(1996, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 255, DateTimeKind.Local).AddTicks(5681),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 253, DateTimeKind.Local).AddTicks(2945),
                             FirstName = "Elisa",
                             LastName = "Yammy"
                         });
@@ -210,14 +212,14 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             Country = "UK",
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(609),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(3370),
                             Name = "IT-publishers"
                         },
                         new
                         {
                             Id = 2,
                             Country = "Sweden",
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(675),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(3441),
                             Name = "FoodBooks"
                         });
                 });
@@ -251,7 +253,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 1,
                             BookId = 1,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(1987),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(5092),
                             ReaderId = 1,
                             Score = 3
                         },
@@ -259,7 +261,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 2,
                             BookId = 2,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(2069),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(5183),
                             ReaderId = 1,
                             Score = 2
                         },
@@ -267,7 +269,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 3,
                             BookId = 3,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(2137),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(5255),
                             ReaderId = 2,
                             Score = 5
                         },
@@ -275,7 +277,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 4,
                             BookId = 1,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(2203),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(5515),
                             ReaderId = 2,
                             Score = 4
                         },
@@ -283,7 +285,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 5,
                             BookId = 2,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(2329),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(5585),
                             ReaderId = 3,
                             Score = 2
                         },
@@ -291,7 +293,7 @@ namespace BookService.WebAPI.Migrations
                         {
                             Id = 6,
                             BookId = 3,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(2396),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(5653),
                             ReaderId = 3,
                             Score = 3
                         });
@@ -319,21 +321,21 @@ namespace BookService.WebAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(4048),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(7410),
                             FirstName = "Joe",
                             LastName = "Pageturner"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(4117),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(7482),
                             FirstName = "Linda",
                             LastName = "Bookslaughter"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 256, DateTimeKind.Local).AddTicks(4184),
+                            CreatedDateTime = new DateTime(2019, 10, 3, 15, 21, 31, 254, DateTimeKind.Local).AddTicks(7540),
                             FirstName = "Wendy",
                             LastName = "Allreader"
                         });
