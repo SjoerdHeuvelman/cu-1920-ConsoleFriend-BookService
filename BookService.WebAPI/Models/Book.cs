@@ -17,7 +17,7 @@ namespace BookService.WebAPI.Models
         public string FileName { get; set; }
         public int Year { get; set; }
         public decimal Price { get; set; }
-        //[JsonIgnore]
+        [JsonIgnore]
         public ICollection<Rating> Ratings { get; set; }
     }
 }
