@@ -21,7 +21,7 @@ namespace BookService.WebAPI.Controllers
 
         // GET: api/Books
         [HttpGet]
-        public async Task<IActionResult> GetBooks()
+        public override async Task<IActionResult> Get()
         {
             return Ok(await repository.GetAllInclusive());
         }
