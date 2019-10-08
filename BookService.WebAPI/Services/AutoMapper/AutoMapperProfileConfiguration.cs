@@ -29,7 +29,7 @@ namespace BookService.WebAPI.Services.AutoMapper
                 .ForMember(dest => dest.RatingsCount,
                             opts => opts.MapFrom(src => src.Ratings.Count))
                 .ForMember(dest => dest.ScoreAverage,
-                            opts => opts.MapFrom(src => src.Ratings.Average(r => r.Score)));
+                           opts => opts.MapFrom(src => src.Ratings.Average(r => r.Score)));
         }
     }
 }
