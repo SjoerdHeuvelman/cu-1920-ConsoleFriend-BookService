@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -38,6 +39,15 @@ namespace BookService.WebAPI.Repositories
                 .Include(b => b.Author)
                 .Include(b => b.Publisher)
                 .FirstOrDefaultAsync(b => b.Id == id));                
-        }        
+        }
+
+        public async Task<List<BookStatisticsDto>> ListStatistics()
+        {
+            return await _bookServiceContext.Books
+                    .Include(b => b.Ratings)
+                    .Where(b => b.Ratings.Count > 0)
+                    .ProjectTo<BookStatisticsDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+        }
     }
 }
