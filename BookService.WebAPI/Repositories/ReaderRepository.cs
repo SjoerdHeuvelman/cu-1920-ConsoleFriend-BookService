@@ -1,5 +1,5 @@
 ﻿using BookService.WebAPI.Data;
-using BookService.WebAPI.Models;
+using BookService.Lib.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

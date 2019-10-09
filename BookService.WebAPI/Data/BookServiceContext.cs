@@ -1,5 +1,5 @@
 ﻿using System;
-using BookService.WebAPI.Models;
+using BookService.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookService.WebAPI.Data

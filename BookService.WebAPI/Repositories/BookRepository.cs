@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BookService.WebAPI.Data;
-using BookService.WebAPI.DTO;
-using BookService.WebAPI.Models;
+using BookService.Lib.DTO;
+using BookService.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookService.WebAPI.Repositories
