@@ -1,0 +1,11 @@
+﻿@model BookService.MVC.Models.Books.BookDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>BookDetails: @Model.BookDetail.Title</h1>
+<p>@Model.BookDetail.ISBN</p>
+<p>@Model.BookDetail.AuthorName</p>
+<blockquote>@Model.AuthorJoke</blockquote>
+<p><img src="https://localhost:4200/api/books/imagebyname/@Model.BookDetail.FileName" alt="@Model.BookDetail.Title Voorpagina" /></p>
+<p>BookSummary: @Model.AuthorJoke</p>
