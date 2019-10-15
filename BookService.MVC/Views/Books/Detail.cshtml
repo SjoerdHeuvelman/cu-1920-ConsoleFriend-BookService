@@ -1,11 +1,25 @@
-﻿@model BookService.MVC.Models.Books.BookDetailViewModel
-@{
-    ViewData["Title"] = "Detail";
-}
+﻿@model BooksDetailViewModel
 
-<h1>BookDetails: @Model.BookDetail.Title</h1>
-<p>@Model.BookDetail.ISBN</p>
-<p>@Model.BookDetail.AuthorName</p>
-<blockquote>@Model.AuthorJoke</blockquote>
-<p><img src="https://localhost:4200/api/books/imagebyname/@Model.BookDetail.FileName" alt="@Model.BookDetail.Title Voorpagina" /></p>
-<p>BookSummary: @Model.AuthorJoke</p>
+<h1>BoekDetails</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">@Model.BookDetail.Title</div>
+    <div class="panel-body">
+        <ul>
+            <li>@Model.BookDetail.ISBN</li>
+            <li>
+                @Model.BookDetail.AuthorName <br />
+            <blockquote><small><i>@Model.AuthorJoke</i></small></blockquote>
+        </li>
+        <li><small>@Model.BookDetail.NumberOfPages</small></li>
+    </ul>
+    <img src="https://localhost:5001/api/books/imagebyname/@Model.BookDetail.FileName" alt="De afbeelding van dit boek" />
+    <p>
+        Summary: <br />
+        <small><i>@Model.BookSummary</i></small>
+    </p>
+    <p><i>&copy; @Model.BookDetail.Year  @Model.BookDetail.PublisherName</i></p>
+</div>
+<div class="panel-footer">
+    <a asp-controller="Books" asp-action="Index" class="btn btn-primary">Back to list</a>
+</div>
+</div>
