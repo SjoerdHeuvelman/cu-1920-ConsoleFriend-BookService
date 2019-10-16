@@ -1,0 +1,15 @@
+﻿@using BookService.Lib.DTO 
+@model List<AuthorBasicDto> 
+<h1>Authors</h1> 
+<div class="row"> 
+    <div class="col-md-4"> 
+    <ul class="list-group"> 
+        @foreach (AuthorBasicDto authorBasic in Model)
+        {
+            <li class="list-group-item"> 
+        <b><a href="#" data-id="@authorBasic.Id" class="author">@authorBasic.Name</a></b> 
+                </li>
+         } 
+        </ul> 
+    </div> 
+</div>
