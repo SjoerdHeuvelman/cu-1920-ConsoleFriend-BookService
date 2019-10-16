@@ -30,6 +30,9 @@ namespace BookService.WebAPI
             services.AddScoped<RatingRepository>();
             services.AddScoped<ReaderRepository>();
 
+            //Ajax Call Req
+            services.AddCors();
+
             var config = new AutoMapper.MapperConfiguration(
                 cfg => {
                     cfg.AddProfile(new AutoMapperProfileConfiguration());
@@ -52,6 +55,14 @@ namespace BookService.WebAPI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //Ajax Call Configuration
+            app.UseCors(builder =>
+                builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        );
 
             app.UseHttpsRedirection();
             app.UseMvc();
